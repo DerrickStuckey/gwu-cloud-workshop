@@ -6,10 +6,11 @@ import pandas as pd
 import MySQLdb as myDB
 from sqlalchemy import create_engine
 
-mysql_host = "gwu-workshop-mysql.cegeieiv8hqw.us-west-2.rds.amazonaws.com:3306"
+mysql_host = "gwu-workshop-mysql.cegeieiv8hqw.us-west-2.rds.amazonaws.com"
 mysql_user = "derrick"
 mysql_pass = ""
 mysql_db = "mydb"
+mysql_port = 3306
 
 # Function to save a dataframe to CSV
 def saveToCsv(df, name):
@@ -19,7 +20,8 @@ def getDBConnect():
     return myDB.connect(host=mysql_host,
                                 user=mysql_user,
                                 passwd=mysql_pass,
-                                db=mysql_db)
+                                db=mysql_db,
+                                port=mysql_port)
 
 # Function to save DataFrame to MySQL database
 def saveToDB(df, table, dbConnect, replace=False):
