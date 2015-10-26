@@ -11,7 +11,6 @@ mysql_user = "derrick"
 mysql_pass = ""
 mysql_db = "mydb"
 
-### Helpful Functions ###
 # Function to save a dataframe to CSV
 def saveToCsv(df, name):
     df.to_csv(saveDir + '/' + name + '.csv')
@@ -43,14 +42,3 @@ def readFromDB(table, dbConnect):
     #clean up SUBJ column
     #df.SUBJ = df.SUBJ.str.strip()
     return df
-### END Helpful Functions ###
-
-# establish a connection
-dbcon = mysqlmod.getDBConnect()
-
-# read the table
-us_interest_rates = readFromDB("us_interest_rates", dbcon)
-
-# print the table
-us_interest_rates
-
