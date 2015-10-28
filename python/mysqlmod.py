@@ -31,16 +31,16 @@ def saveToDB(df, table, dbConnect, replace=False):
         action='append'
     #clean up any 'NaN' fields which mysql doesn't understand
     dfClean = df.where((pd.notnull(df)), None)
+    
+    #write to the DB
     dfClean.to_sql(con=dbConnect,
                     name=table,
                     if_exists=action,
                     flavor='mysql')
 
-# Missing sqlalchemy.schema module
+# Read a table from a MySQL DB as a Pandas DataFrame using sqlalchemy
 def readFromDB(table, dbConnect):
     engine = create_engine('mysql+mysqldb://' + mysql_user + ':' + mysql_pass + '@' + mysql_host + '/' + mysql_db)
     
     df = pd.read_sql_table(table, con=engine)
-    #clean up SUBJ column
-    #df.SUBJ = df.SUBJ.str.strip()
     return df

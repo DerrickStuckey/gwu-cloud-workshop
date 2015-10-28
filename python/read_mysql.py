@@ -1,3 +1,4 @@
+## sample script to read 'us_interest_rates' table from a MySQL DB
 
 import mysqlmod
 
