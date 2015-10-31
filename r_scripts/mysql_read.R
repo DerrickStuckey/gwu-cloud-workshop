@@ -29,7 +29,7 @@ dbClearResult(results)
 results2 = dbSendQuery(mydb, "select * from us_interest_rates")
 full_table <- fetch(results2, n=-1)
 head(full_table)
-dbClearResult(results)
+dbClearResult(results2)
 
 dbDisconnect(mydb)
 

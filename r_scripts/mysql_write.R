@@ -18,7 +18,7 @@ mydb = dbConnect(MySQL(),
 
 dbListTables(mydb)
 
-interest_rates <- read.csv("../data/us_10year_rates.csv")
+interest_rates <- read.csv("../data/us_interest_rates.csv")
 head(interest_rates)
 
 dbWriteTable(mydb, name='us_interest_rates', value=interest_rates,
