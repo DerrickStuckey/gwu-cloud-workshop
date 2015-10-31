@@ -2,7 +2,7 @@
 
 library(RMySQL)
 
-mysql_host <- "gwu-workshop.cegeieiv8hqw.us-west-2.rds.amazonaws.com"
+mysql_host <- "gwu-workshop-mysql.cegeieiv8hqw.us-west-2.rds.amazonaws.com"
 mysql_user <- "derrick"
 mysql_pass <- ""
 mysql_dbname <- "mydb"
