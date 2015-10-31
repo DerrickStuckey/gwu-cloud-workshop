@@ -3,10 +3,10 @@
 install.packages("RMySQL")
 library(RMySQL)
 
-mysql_host <- "micromachine.cegeieiv8hqw.us-west-2.rds.amazonaws.com"
+mysql_host <- "gwu-workshop-mysql.cegeieiv8hqw.us-west-2.rds.amazonaws.com"
 mysql_user <- "derrick"
-mysql_pass <- "needscoffee"
-mysql_dbname <- "workshop"
+mysql_pass <- ""
+mysql_dbname <- "mydb"
 mysql_port <- 3306
 
 mydb = dbConnect(MySQL(), 
@@ -18,7 +18,7 @@ mydb = dbConnect(MySQL(),
 
 dbListTables(mydb)
 
-interest_rates <- read.csv("../us_10year_rates.csv")
+interest_rates <- read.csv("../data/us_10year_rates.csv")
 head(interest_rates)
 
 dbWriteTable(mydb, name='us_interest_rates', value=interest_rates,

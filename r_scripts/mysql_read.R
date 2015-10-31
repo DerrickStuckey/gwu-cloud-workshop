@@ -4,7 +4,7 @@ library(RMySQL)
 
 mysql_host <- "gwu-workshop.cegeieiv8hqw.us-west-2.rds.amazonaws.com"
 mysql_user <- "derrick"
-mysql_pass <- "needscoffee"
+mysql_pass <- ""
 mysql_dbname <- "mydb"
 mysql_port <- 3306
 
