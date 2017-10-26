@@ -10,6 +10,7 @@ dbcon = MySQLdb.connect(host=host,user=user,passwd=password,db=database)
 
 # execute a query to read the interest rate data
 c = dbcon.cursor()
+c.execute("select * from interest_rates")
 
 # read the first row of the results
 r1 = c.fetchone()
