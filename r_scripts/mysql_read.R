@@ -28,6 +28,7 @@ dbClearResult(results)
 # read the whole table
 results2 = dbSendQuery(mydb, "select * from us_interest_rates")
 full_table <- fetch(results2, n=-1)
+nrow(full_table)
 head(full_table)
 dbClearResult(results2)
 
