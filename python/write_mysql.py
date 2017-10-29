@@ -1,25 +1,40 @@
 import csv
 import MySQLdb
+import getpass
 
 # establish a database connection
-host = "gwu-test-oct7.cikpgzqhte4c.us-east-1.rds.amazonaws.com"
+host = "gwutest.cikpgzqhte4c.us-east-1.rds.amazonaws.com"
 user = "dstuckey"
-password = "gwutestoct7"
+password = getpass.getpass()
 database = "workshop"
-dbcon = MySQLdb.connect(host=host,user=user,passwd=password,db=database)
-
-# create a table to hold the data
-c = dbcon.cursor()
-c.execute("create table interest_rates (year int, rate double) ")
 
 # read the csv
-with open("./gwu-cloud-workshop/data/us_interest_rates.csv","rb") as csvfile:
+data = []
+with open("../data/us_interest_rates.csv","rb") as csvfile:
     reader = csv.reader(csvfile)
     reader.next() #skip the header
     data = [row for row in reader]
 
-# insert the data
-c.executemany("INSERT INTO interest_rates (year,rate) VALUES (%s,%s)", data )
+dbcon = MySQLdb.connect(host=host,user=user,passwd=password,db=database)
+
+# release resources after executing queries
+with dbcon:
+	# create a table to hold the data
+	c = dbcon.cursor()
+	c.execute("drop table if exists interest_rates ")
+	print(c.fetchall())
+	c.execute("create table interest_rates (year int, rate double) ")
+	print(c.fetchall())
+
+	# import pdb; pdb.set_trace()
+
+	# c.close()
+	# c = dbcon.cursor()
+	# c.execute("insert into interest_rates (year,rate) values (1,1.1);")
+
+	# insert the data
+	c.executemany("INSERT INTO interest_rates (year,rate) VALUES (%s,%s)", data)
+	print(c.fetchall())
 
 
 
