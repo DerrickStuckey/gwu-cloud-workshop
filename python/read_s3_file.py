@@ -1,6 +1,6 @@
-import urllib
+import urllib.request
 
-link = "https://s3.amazonaws.com/stuckeys-bucket/us_interest_rates.csv"
-f = urllib.urlopen(link)
+link = "https://s3.amazonaws.com/stuckey-test-bucket/us_interest_rates.csv"
+f = urllib.request.urlopen(link)
 myfile = f.read()
-print myfile
+print(myfile)
