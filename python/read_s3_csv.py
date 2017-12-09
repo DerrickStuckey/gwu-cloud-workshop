@@ -14,7 +14,7 @@ for row in reader:
 
 avg_rate = float(sum(rates)) / len(rates)
 
-print "Average interest rate between %s and %s:" % (years[0], years[-1])
-print "%0.2f" % avg_rate
+print("Average interest rate between %s and %s:" % (years[0], years[-1]))
+print("%0.2f" % avg_rate)
 
 
