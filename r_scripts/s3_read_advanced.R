@@ -5,6 +5,7 @@ install.packages("xml2")
 install.packages("aws.s3")
 library("aws.s3")
 
+# obtain from ~/.aws/credentials
 Sys.setenv("AWS_ACCESS_KEY_ID" = "",
            "AWS_SECRET_ACCESS_KEY" = "",
            "AWS_DEFAULT_REGION" = "us-east-1")
