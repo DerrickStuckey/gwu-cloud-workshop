@@ -1,11 +1,12 @@
 ## read CSV from S3
 
-us_10year_rates <- read.table("http://s3.amazonaws.com/stuckeys-bucket/us_interest_rates.csv",
+AAPL.prices <- read.table("http://s3.amazonaws.com/gwu-workshop-stuckey/AAPL.csv",
                               header=TRUE, sep=",")
 
-summary(us_10year_rates)
+summary(AAPL.prices)
 
-head(us_10year_rates)
+head(AAPL.prices)
 
-mean(us_10year_rates$interest_rate)
+mean(AAPL.prices$Adj.Close)
+var(AAPL.prices$Adj.Close)
 

@@ -23,7 +23,7 @@ for (obj in workshop_bucket) {
   print(key)
 }
 
-# read the object we are interested in, "us_interest_rates.csv", as a dataframe, using read.csv
-us_interest_rates <- s3read_using(read.csv, object="us_interest_rates.csv", bucket="gwu-workshop-stuckey")
-head(us_interest_rates)
+# read the object we are interested in, "secret_spy_stuff.csv", as a dataframe, using read.csv
+secret_spy_stuff <- s3read_using(read.csv, object="secret_spy_stuff.csv", bucket="gwu-workshop-stuckey")
+head(secret_spy_stuff)
 
