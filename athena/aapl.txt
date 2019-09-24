@@ -1,0 +1,58 @@
+-- if the table already exists, drop it so we can create it fresh
+drop table if exists aapl;
+
+-- create the table with 7 fields, in CSV format
+create external table aapl
+(
+  day date,
+  open decimal,
+  high decimal,
+  low decimal,
+  close decimal, 
+  adj_close decimal,
+  volume decimal
+)
+ROW FORMAT DELIMITED 
+  FIELDS TERMINATED BY ',' 
+STORED AS TEXTFILE
+LOCATION
+  's3://gwu-workshop-stuckey/Apple_Stock';
+
+-- the first 10 rows of the table
+select * from aapl limit 10;
+
+
+-- if the table already exists, drop it so we can create it fresh
+drop table if exists aapl;
+
+-- re-create the table, adding an option to skip the first row (the header)
+create external table aapl
+(
+  day date,
+  open decimal,
+  high decimal,
+  low decimal,
+  close decimal, 
+  adj_close decimal,
+  volume decimal
+)
+ROW FORMAT DELIMITED 
+  FIELDS TERMINATED BY ',' 
+STORED AS TEXTFILE
+LOCATION
+  's3://gwu-workshop-stuckey/Apple_Stock'
+TBLPROPERTIES (
+  'skip.header.line.count' = '1');
+
+-- the first 10 rows of the table
+select * from aapl limit 10;
+
+-- what is the first day in this dataset?
+select min(day) from aapl;
+
+-- what is the average adjusted closing price in this dataset?
+select avg(adj_close) from aapl;
+
+-- what is the average volume, for 2019 only?
+select avg(volume) from aapl where day >= date('2019-01-01');
+
