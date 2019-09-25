@@ -1,0 +1,31 @@
+-- 'Troll Tweets' table 
+
+DROP TABLE IF EXISTS `troll_tweets`;
+
+CREATE EXTERNAL TABLE `troll_tweets`(
+  `external_author_id` float, 
+  `author` string, 
+  `content` string, 
+  `region` string, 
+  `language` string, 
+  `publish_date` string, 
+  `harvested_date` string, 
+  `following` int, 
+  `followers` int, 
+  `updates` int, 
+  `post_type` string, 
+  `account_type` string, 
+  `new_june_2018` int, 
+  `retweet` int, 
+  `account_category` string)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde' 
+WITH SERDEPROPERTIES ("separatorChar" = ",", 'quotechar'='"','escapeChar' = "\\")
+STORED AS TEXTFILE
+LOCATION
+  's3://gwu-troll-tweets/troll-tweets-full'
+TBLPROPERTIES (
+  'skip.header.line.count' = '1');
+
+select * from troll_tweets limit 10;
+
+select avg(followers) from troll_tweets;
