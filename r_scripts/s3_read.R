@@ -1,12 +1,12 @@
 ## read CSV from S3
 
-AAPL.prices <- read.table("http://s3.amazonaws.com/gwu-workshop-stuckey/AAPL.csv",
-                              header=TRUE, sep=",")
+s3.url <- "http://s3.amazonaws.com/gwu-workshop-stuckey/Apple_Stock/AAPL.csv"
 
-summary(AAPL.prices)
+s3.csv <- read.table(s3.url, header=TRUE, sep=",", stringsAsFactors = FALSE)
 
-head(AAPL.prices)
+head(s3.csv)
 
-mean(AAPL.prices$Adj.Close)
-var(AAPL.prices$Adj.Close)
+mean(s3.csv$Adj.Close)
+var(s3.csv$Adj.Close)
 
+min(s3.csv$Date)
