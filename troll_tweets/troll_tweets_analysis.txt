@@ -1,0 +1,26 @@
+
+-- total number of rows in the 'troll_tweets' table
+select count(*) from troll_tweets;
+
+-- total number of rows in the 'troll_tweets_partitioned' table
+select count(*) from troll_tweets_partitioned;
+
+-- number of rows where the language is specified as English
+-- note the 'Data scanned' value above the results
+select count(*) from troll_tweets where language = 'English';
+
+-- for the partitioned version, note the difference in 'Data scanned'
+select count(*) from troll_tweets_partitioned where language = 'English';
+
+-- number of tweets in French
+select count(*) from troll_tweets where language = 'French';
+
+-- average number of followers for each language
+select language, avg(followers) from troll_tweets group by language;
+
+-- top 10 authors with the most tweets
+select author, count(*) from troll_tweets group by author order by count(*) desc limit 10;
+
+-- top 10 authors with the most followers (max followers for any tweet by that author)
+select author, max(followers) from troll_tweets group by author order by max(followers) desc limit 10;
+
