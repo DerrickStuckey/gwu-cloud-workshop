@@ -21,6 +21,8 @@ LOCATION
 -- the first 10 rows of the table
 select * from aapl limit 10;
 
+-- everything look OK?
+
 
 -- if the table already exists, drop it so we can create it fresh
 drop table if exists aapl;
