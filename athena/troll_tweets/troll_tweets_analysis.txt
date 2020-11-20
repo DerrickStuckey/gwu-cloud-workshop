@@ -15,6 +15,9 @@ select count(*) from troll_tweets_partitioned where language = 'English';
 -- number of tweets in French
 select count(*) from troll_tweets where language = 'French';
 
+-- number of tweets in French (partitioned table version)
+select count(*) from troll_tweets_partitioned where language = 'French';
+
 -- average number of followers for each language
 select language, avg(followers) from troll_tweets group by language;
 
